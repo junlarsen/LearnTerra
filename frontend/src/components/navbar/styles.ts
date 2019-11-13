@@ -3,8 +3,8 @@ import styled from 'styled-components'
 export const container = styled.div`
   height: 64px;
   width: 100%;
-  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
-  background: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  background: ${props => props.theme.color.primary};
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

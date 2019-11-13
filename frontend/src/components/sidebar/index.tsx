@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from 'styled-components'
 import { Row } from '../row'
+import * as app from './styles'
 
 export function Sidebar() {
-    return (
-        <>
-            <Row color={'#f2f2f2'}/>
-        </>
-    )
+  const theme = useContext(ThemeContext)
+
+  return (
+    <app.content>
+      <Row color={theme.color.secondary}/>
+    </app.content>
+  )
 }

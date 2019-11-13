@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from 'styled-components'
 import { Row } from '../row'
 
 export function Frame() {
+    const theme = useContext(ThemeContext)
+
     return (
-        <Row color={"#f7f7f7"} />
+        <Row color={theme.color.accent} />
     )
 }
