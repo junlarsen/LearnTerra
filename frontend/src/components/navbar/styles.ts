@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const container = styled.div`
+export const Wrapper = styled.div`
   height: 64px;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
@@ -13,7 +13,7 @@ export const container = styled.div`
   left: 0;
 `
 
-export const block = styled.div`
+export const Block = styled.div`
   height: 100%;
   font-size: 3rem;
   line-height: 1;

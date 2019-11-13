@@ -1,8 +1,8 @@
 import React from 'react'
-import * as app from './styles'
+import { Wrapper } from './styles'
 
-export function Row({ color, children }: React.PropsWithChildren<{ color: string }>) {
+export function Row({ color, children }: React.PropsWithChildren<{ color: string }>): JSX.Element {
     return (
-        <app.container color={color}>{children}</app.container>
+        <Wrapper color={color}>{children}</Wrapper>
     )
 }

@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 
-export const application = styled.div`
+export const Application = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   padding-top: 64px;
 `
 
-export const sidebar = styled.div`
+export const SidebarWrapper = styled.div`
   width: 20vw;
 `
 
-export const board = styled.div`
+export const BoardWrapper = styled.div`
   width: 80vw;
 `

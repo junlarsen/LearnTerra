@@ -6,7 +6,7 @@ import { Navbar, NavText } from '../../components/navbar'
 import { Sidebar } from '../../components/sidebar'
 import { Frame } from '../../components/frame'
 import { Theme } from '../../theme'
-import * as app from './styles'
+import { SidebarWrapper, BoardWrapper, Application } from './styles'
 
 export function App() {
   return (
@@ -16,14 +16,14 @@ export function App() {
           <NavText title={'SECRET PROJECT'}/>
         </Navbar>
         <div>
-          <app.application>
-            <app.board>
+          <Application>
+            <BoardWrapper>
               <Frame/>
-            </app.board>
-            <app.sidebar>
-              <Sidebar/>
-            </app.sidebar>
-          </app.application>
+            </BoardWrapper>
+            <SidebarWrapper>
+              <Sidebar />
+            </SidebarWrapper>
+          </Application>
         </div>
       </ThemeProvider>
     </Provider>
