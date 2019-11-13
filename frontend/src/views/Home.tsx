@@ -1,6 +1,8 @@
 import React from 'react'
-import { Navbar } from '../components/navbar'
+import { Navbar, NavText } from '../components/navbar'
 
 export function Home() {
-    return (<Navbar />)
+    return (<Navbar>
+        <NavText title={"Hello"} />
+    </Navbar>)
 }
