@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { App } from './views/Home'
+import { App } from './views/home'
 import { unregister } from './serviceWorker'
 import './App.scss'
 import 'normalize.css/normalize.css'
