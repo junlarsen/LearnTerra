@@ -1,6 +1,6 @@
 import React from 'react'
-import { Header } from '../components/Header'
+import { Navbar } from '../components/navbar'
 
 export function Home() {
-    return (<Header>Hello World</Header>)
+    return (<Navbar />)
 }

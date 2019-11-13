@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './App'
 import { unregister } from './serviceWorker'
+import './App.scss'
 import 'normalize.css/normalize.css'
 
 ReactDOM.render(<App />, document.getElementById('root'))
