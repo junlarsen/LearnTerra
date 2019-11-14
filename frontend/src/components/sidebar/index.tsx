@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Row } from '../row'
+import { Row, RowHeader } from '../row'
 import { Content } from './styles'
 
 export function Sidebar() {
@@ -8,7 +8,9 @@ export function Sidebar() {
 
   return (
     <Content>
-      <Row color={theme.color.secondary}/>
+      <Row color={theme.color.dark}>
+        <RowHeader>MATCH TIMELINE</RowHeader>
+      </Row>
     </Content>
   )
 }

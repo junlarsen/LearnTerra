@@ -17,6 +17,7 @@ export const Block = styled.div`
   height: 100%;
   font-size: 3rem;
   line-height: 1;
-  margin: 8px 8px;
+  margin: 8px 16px;
   font-family: "Roboto Mono", sans-serif;
+  color: ${props => props.theme.color.text};
 `

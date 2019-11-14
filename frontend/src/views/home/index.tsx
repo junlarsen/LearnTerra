@@ -21,7 +21,7 @@ export function App() {
               <Frame/>
             </BoardWrapper>
             <SidebarWrapper>
-              <Sidebar />
+              <Sidebar/>
             </SidebarWrapper>
           </Application>
         </div>
