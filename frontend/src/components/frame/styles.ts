@@ -5,6 +5,10 @@ export const Wrapper = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+  
+  &.controls {
+    min-width: 148px;
+  }
 `
 
 export const GameCode = styled.span`

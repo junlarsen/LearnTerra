@@ -15,6 +15,6 @@ export function RowHeader({ children }: React.PropsWithChildren<{}>) {
 
 export function RowIcon({ children }: React.PropsWithChildren<{}>) {
   return (
-    <></>
+    <Icon>{children}</Icon>
   )
 }

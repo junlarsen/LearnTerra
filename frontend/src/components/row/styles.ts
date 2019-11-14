@@ -18,5 +18,7 @@ export const Title = styled.span`
 `
 
 export const Icon = styled.div`
-
+  height: 100%;
+  padding: 8px;
+  line-height: 3rem;
 `
