@@ -20,5 +20,24 @@ export const Title = styled.span`
 export const Icon = styled.div`
   height: 100%;
   padding: 8px;
-  line-height: 3rem;
+  line-height: 1rem;
+  cursor: pointer;
+`
+
+export const NormalButton = styled.button`
+  border: none;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select:none;
+    
+  &:disabled {
+    cursor:not-allowed;
+  }
 `
