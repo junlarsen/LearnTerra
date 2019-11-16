@@ -8,7 +8,7 @@ import { Frame } from '../../components/frame'
 import { Theme } from '../../theme'
 import { SidebarWrapper, BoardWrapper, Application } from './styles'
 
-export function App() {
+export function Home() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={Theme}>
