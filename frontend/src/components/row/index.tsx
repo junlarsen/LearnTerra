@@ -13,9 +13,9 @@ export function RowHeader({ children }: React.PropsWithChildren<{}> & HTMLAttrib
   )
 }
 
-export function RowAction({ children }: React.PropsWithChildren<{}> & HTMLAttributes<{}>): JSX.Element {
+export function RowAction({ children, handler }: React.PropsWithChildren<{ handler: () => void }> & HTMLAttributes<{}>): JSX.Element {
   return (
-    <NormalButton>
+    <NormalButton onClick={() => handler()}>
       <Icon>{children}</Icon>
     </NormalButton>
   )

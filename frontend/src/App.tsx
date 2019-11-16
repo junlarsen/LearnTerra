@@ -15,11 +15,11 @@ export function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/">
-              <Home />
+
             </Route>
 
             <Route path="/:game">
-
+              <Home />
             </Route>
           </Switch>
         </BrowserRouter>
