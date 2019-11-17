@@ -1,18 +1,18 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
-import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import { Wrapper, GameCode } from './styles'
 import { Row, RowHeader, RowAction } from '../row'
 import { Board } from '../board'
+import { setFrame } from '../../redux/actions'
 
 import NavigateBefore from '../../assets/navigate-before.svg'
 import NavigateAfter from '../../assets/navigate-next.svg'
 
 export function Frame() {
   const theme = useContext(ThemeContext)
-  const [frame, setFrame] = useState(0)
-  const { game } = useParams()
+  const { limit, frame, id } = useSelector((state: any) => state.app)
 
   return (
     <>
@@ -21,16 +21,16 @@ export function Frame() {
           <RowHeader>MATCH FRAMES</RowHeader>
           <div>
             <Wrapper className="controls">
-              <RowAction className="button" role="button" handler={() => setFrame(frame - 1)}>
-                <img alt="Previous Frame" src={NavigateBefore} />
+              <RowAction className="button" role="button" handler={(h: Function) => h(setFrame(frame - 1))}>
+                <img alt="Previous Frame" src={NavigateBefore}/>
               </RowAction>
-              <RowHeader>{frame}/0</RowHeader>
-              <RowAction className="button" role="button" handler={() => setFrame(frame + 1)}>
-                <img alt="Next Frame" src={NavigateAfter} />
+              <RowHeader>{frame}/{limit}</RowHeader>
+              <RowAction className="button" role="button" handler={(h: Function) => h(setFrame(frame + 1))}>
+                <img alt="Next Frame" src={NavigateAfter}/>
               </RowAction>
             </Wrapper>
           </div>
-          <RowHeader>GAME CODE: <GameCode>{game || "000000"}</GameCode></RowHeader>
+          <RowHeader>GAME CODE: <GameCode>{id || '000000'}</GameCode></RowHeader>
         </Wrapper>
       </Row>
 

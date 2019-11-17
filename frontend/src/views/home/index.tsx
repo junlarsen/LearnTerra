@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { PropsWithChildren, useState } from 'react'
 import { Navbar, NavText } from '../../components/navbar'
 import { Sidebar } from '../../components/sidebar'
 import { Frame } from '../../components/frame'
 import { Loader } from '../../components/loading'
 import { SidebarWrapper, BoardWrapper, Application } from './styles'
+import { setFrame, setFrameLimit, setGame } from '../../redux/actions'
+import { connect, DispatchProp } from 'react-redux'
+import { useParams } from 'react-router'
 
 // mock backend api call
 // this will set redux state when a response from backend
@@ -15,20 +18,14 @@ async function mockAPI(): Promise<boolean> {
   })
 }
 
-export function Home(): JSX.Element {
-  const [loaded, setLoaded] = useState(false)
+function MainComponent({ dispatch }: PropsWithChildren<{}> & DispatchProp): JSX.Element {
+  // This is safe because this component will not render if this is not set
+  const { game } = useParams()
 
-  mockAPI().then(res => setLoaded(res))
+  dispatch(setGame(game!))
+  dispatch(setFrameLimit(100))
+  dispatch(setFrame(1))
 
-  return (
-    <>
-      {!loaded && <Loader/>}
-      {loaded && <MainApp />}
-    </>
-  )
-}
-
-function MainApp(): JSX.Element {
   return (
     <>
       <Navbar>
@@ -37,13 +34,27 @@ function MainApp(): JSX.Element {
       <div>
         <Application>
           <BoardWrapper>
-            <Frame/>
+            <Frame />
           </BoardWrapper>
           <SidebarWrapper>
-            <Sidebar/>
+            <Sidebar />
           </SidebarWrapper>
         </Application>
       </div>
+    </>
+  )
+}
+const Main = connect()(MainComponent)
+
+export function Home(): JSX.Element {
+  const [loaded, setLoaded] = useState(false)
+
+  mockAPI().then(res => setLoaded(res))
+
+  return (
+    <>
+      {!loaded && <Loader />}
+      {loaded && <Main />}
     </>
   )
 }
