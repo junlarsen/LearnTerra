@@ -1,31 +1,48 @@
-import React, { PropsWithChildren, useState } from 'react'
+import React, { useState } from 'react'
 import { Navbar, NavText } from '../../components/navbar'
 import { Sidebar } from '../../components/sidebar'
 import { Frame } from '../../components/frame'
 import { Loader } from '../../components/loading'
 import { SidebarWrapper, BoardWrapper, Application } from './styles'
 import { setFrame, setFrameLimit, setGame } from '../../redux/actions'
-import { connect, DispatchProp } from 'react-redux'
+import { store } from '../../redux'
 import { useParams } from 'react-router'
 
-// mock backend api call
-// this will set redux state when a response from backend
-// has been recieved. will return whether the backend gave
-// valid game or not.
-async function mockAPI(): Promise<boolean> {
-  return new Promise(res => {
-    setTimeout(() => res(true), 1000)
+// temporary api endpoint
+export const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://supergrecko.com/api/v1'
+
+async function call(game: string): Promise<boolean> {
+  const res = await fetch(`${BASE_URL}/game/${game}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
+
+  if (!res.ok) {
+    return false
+  }
+
+  const json = await res.json()
+
+  store.dispatch(setFrameLimit(json.frameCount))
+  store.dispatch(setFrame(1))
+  store.dispatch(setGame(json.gameId))
+
+  return true
 }
 
-function MainComponent({ dispatch }: PropsWithChildren<{}> & DispatchProp): JSX.Element {
-  // This is safe because this component will not render if this is not set
-  const { game } = useParams()
+const events: Array<string> = []
+function once(event: string, callback: () => void) {
+  if (events.includes(event)) {
+    return
+  }
 
-  dispatch(setGame(game!))
-  dispatch(setFrameLimit(100))
-  dispatch(setFrame(1))
+  callback()
+  events.push(event)
+}
 
+function Main(): JSX.Element {
   return (
     <>
       <Navbar>
@@ -44,12 +61,16 @@ function MainComponent({ dispatch }: PropsWithChildren<{}> & DispatchProp): JSX.
     </>
   )
 }
-const Main = connect()(MainComponent)
 
 export function Home(): JSX.Element {
   const [loaded, setLoaded] = useState(false)
+  const { game } = useParams()
 
-  mockAPI().then(res => setLoaded(res))
+  once('fetch data from api', () => {
+    call(game!).then(res => {
+      setLoaded(res)
+    })
+  })
 
   return (
     <>
