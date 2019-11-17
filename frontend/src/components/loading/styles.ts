@@ -12,7 +12,7 @@ export const Container = styled.div`
 `
 
 export const Title = styled.h1`
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   color: ${props => props.theme.color.text};
   font-family: "Roboto Mono", sans-serif;
 `
