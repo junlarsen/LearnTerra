@@ -38,8 +38,6 @@ function once(event: string, callback: () => void) {
     return
   }
 
-  console.log("called")
-
   callback()
   events.push(event)
 }
@@ -68,7 +66,7 @@ export function Home(): JSX.Element {
   const [loaded, setLoaded] = useState(false)
   const { game } = useParams()
 
-  once('loaded', () => {
+  once('fetch data from api', () => {
     call(game!).then(res => {
       setLoaded(res)
     })
