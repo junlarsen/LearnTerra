@@ -11,6 +11,6 @@ export function Navbar({ children }: PropsWithChildren<{}>) {
 // Create a text item to put inside the navbar
 export function NavText({ title }: PropsWithChildren<{ title: string }>) {
   return (
-    <Block>{title}</Block>
+    <Block href="/">{title}</Block>
   )
 }

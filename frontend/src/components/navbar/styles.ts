@@ -13,11 +13,12 @@ export const Wrapper = styled.div`
   left: 0;
 `
 
-export const Block = styled.div`
+export const Block = styled.a`
   height: 100%;
   font-size: 3rem;
   line-height: 1;
   margin: 8px 16px;
+  text-decoration: none;
   font-family: "Roboto Mono", sans-serif;
   color: ${props => props.theme.color.text};
 `

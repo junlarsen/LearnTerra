@@ -6,7 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { store } from './redux'
 import { Theme } from './theme'
 
-import { Home } from './views/home'
+import { Home, Welcome } from './views/home'
 
 export function App() {
   return (
@@ -15,7 +15,7 @@ export function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/">
-
+              <Welcome />
             </Route>
 
             <Route path="/:game">
