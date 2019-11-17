@@ -16,3 +16,9 @@ export const Title = styled.h1`
   color: ${props => props.theme.color.text};
   font-family: "Roboto Mono", sans-serif;
 `
+
+export const Text = styled.p`
+  font-size: 1rem;
+  color: ${props => props.theme.color.light};
+  font-family: "Roboto", sans-serif;
+`
