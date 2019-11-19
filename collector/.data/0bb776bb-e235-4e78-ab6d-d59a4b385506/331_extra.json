@@ -44,7 +44,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01NX019.png",
                 "type": "Spell"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 0,
+                "health": 0,
+                "cost": 3
+            }
         },
         {
             "CardID": 1337410364,
@@ -63,7 +67,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01SI001.png",
                 "type": "Spell"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 0,
+                "health": 0,
+                "cost": 7
+            }
         },
         {
             "CardID": 2044596906,
@@ -82,7 +90,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01NX038.png",
                 "type": "Unit"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 6,
+                "health": 5,
+                "cost": 6
+            }
         },
         {
             "CardID": 1114214732,
@@ -103,7 +115,8 @@
             },
             "currentStats": {
                 "attack": 3,
-                "health": 1
+                "health": 1,
+                "cost": 3
             }
         },
         {
@@ -123,7 +136,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01SI027.png",
                 "type": "Spell"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 0,
+                "health": 0,
+                "cost": 3
+            }
         },
         {
             "CardID": 620323970,
@@ -142,7 +159,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01SI002.png",
                 "type": "Unit"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 1,
+                "health": 1,
+                "cost": 1
+            }
         },
         {
             "CardID": 562869672,
@@ -163,7 +184,8 @@
             },
             "currentStats": {
                 "attack": 4,
-                "health": 3
+                "health": 3,
+                "cost": 3
             }
         },
         {
@@ -183,7 +205,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01SI002.png",
                 "type": "Unit"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 1,
+                "health": 1,
+                "cost": 1
+            }
         },
         {
             "CardID": 866092696,
@@ -202,7 +228,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01SI002.png",
                 "type": "Unit"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 1,
+                "health": 1,
+                "cost": 1
+            }
         },
         {
             "CardID": 54823422,
@@ -221,7 +251,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01SI002.png",
                 "type": "Unit"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 1,
+                "health": 1,
+                "cost": 1
+            }
         },
         {
             "CardID": 86640651,
@@ -240,7 +274,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01NX023.png",
                 "type": "Unit"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 5,
+                "health": 3,
+                "cost": 5
+            }
         },
         {
             "CardID": 412081155,
@@ -259,7 +297,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01SI050.png",
                 "type": "Spell"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 0,
+                "health": 0,
+                "cost": 6
+            }
         },
         {
             "CardID": 1654275428,
@@ -278,7 +320,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01NX012.png",
                 "type": "Unit"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 3,
+                "health": 2,
+                "cost": 1
+            }
         },
         {
             "CardID": 1708852713,
@@ -297,7 +343,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01SI037.png",
                 "type": "Unit"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 1,
+                "health": 1,
+                "cost": 1
+            }
         },
         {
             "CardID": 1831579392,
@@ -316,7 +366,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01NX022.png",
                 "type": "Spell"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 0,
+                "health": 0,
+                "cost": 3
+            }
         },
         {
             "CardID": 1083055869,
@@ -335,7 +389,11 @@
                 "img": "http://dd.b.pvp.net/Set1/en_us/img/cards/01SI039.png",
                 "type": "Unit"
             },
-            "currentStats": null
+            "currentStats": {
+                "attack": 3,
+                "health": 2,
+                "cost": 2
+            }
         }
     ],
     "recordedAt": 331

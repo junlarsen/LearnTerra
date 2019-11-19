@@ -58,7 +58,11 @@ async function processGameFrames(gameId) {
 
             const cardDefinition = cardDefinitions[0]
 
-            let stats = null
+            let stats = {
+                'attack': cardDefinition['attack'],
+                'health': cardDefinition['health'],
+                'cost': cardDefinition['cost'],
+            }
 
             const matchedStatsOutput = statsOutput.filter(
                 statEntry => rect['CardCode'] === statEntry['cardCode'] 
@@ -68,7 +72,7 @@ async function processGameFrames(gameId) {
             )
 
             if (matchedStatsOutput.length === 1) {
-                stats = matchedStatsOutput[0]['stats']
+                stats = Object.assign({}, stats, matchedStatsOutput[0]['stats'])
             }
 
             const extraData = {
@@ -92,7 +96,7 @@ async function processGameFrames(gameId) {
     const frames = Object.values(gameData)
 
     await fs.writeFile(path.resolve(gamePath, `output.json`), JSON.stringify(frames, null, 4))
-    
+
     return frames
 }
 
