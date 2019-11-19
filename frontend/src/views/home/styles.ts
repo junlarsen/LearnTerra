@@ -42,6 +42,14 @@ export const Input = styled.input`
   margin: 0.2rem 0;
 `
 
+export const Textarea = styled.textarea`
+  padding: 0.5rem;
+  border-width: 0;
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+  margin: 0.2rem 0;
+`
+
 export const Button = styled(NormalButton)`
   margin: 0.2rem 0;
   padding: 0.75rem;
