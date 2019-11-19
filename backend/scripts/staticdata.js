@@ -19,7 +19,7 @@ async function readStaticData() {
     return JSON.parse(content)
 }
 
-async function readGameFrames(gameId) {
+async function processGameFrames(gameId) {
     const gamePath = path.resolve(COLLECTOR_DATA_DIRECTORY, gameId)
     const exists = await fs.pathExists(gamePath)
 
@@ -27,9 +27,16 @@ async function readGameFrames(gameId) {
         throw Error('Could not load game, the specified directory does not exist')
     }
 
+    const statsPath = path.resolve(COLLECTOR_DATA_DIRECTORY, gameId, 'stats', 'stats.json')
+    const statsOutput = JSON.parse(await fs.readFile(statsPath, 'utf8'))
+
     const staticData = await readStaticData()
 
-    const paths = await globby([`${gamePath}/*.json`])
+    const paths = await globby([
+        `${gamePath}/*.json`, 
+        `!${gamePath}/*_extra.json`,
+        `!${gamePath}/output.json`,
+    ])
     
     let gameData = {}
 
@@ -38,7 +45,9 @@ async function readGameFrames(gameId) {
         const data = JSON.parse(content)
 
         const filePathParts = gameFilePath.split('/')
-        const recordedAt = filePathParts[filePathParts.length - 1].replace('.json', '')
+        const recordedAt = parseInt(filePathParts[filePathParts.length - 1].replace('.json', ''))
+
+        data['recordedAt'] = recordedAt
 
         data['Rectangles'] = data['Rectangles'].map(rect => {
             const cardDefinitions = staticData.filter(cardDef => cardDef['cardCode'] === rect['CardCode'])
@@ -48,6 +57,19 @@ async function readGameFrames(gameId) {
             }
 
             const cardDefinition = cardDefinitions[0]
+
+            let stats = null
+
+            const matchedStatsOutput = statsOutput.filter(
+                statEntry => rect['CardCode'] === statEntry['cardCode'] 
+                    && recordedAt >= statEntry['observedAt'][0]
+                    && recordedAt < statEntry['observedAt'][1]
+                    && rect['LocalPlayer'] === statEntry['local']
+            )
+
+            if (matchedStatsOutput.length === 1) {
+                stats = matchedStatsOutput[0]['stats']
+            }
 
             const extraData = {
                 'name': cardDefinition['name'],
@@ -59,20 +81,24 @@ async function readGameFrames(gameId) {
                 'type': cardDefinition['type'],
             }
 
-            return Object.assign({}, rect, {'staticData': extraData})
+            return Object.assign({}, rect, {'staticData': extraData, 'currentStats': stats})
         })
 
-        await fs.writeFile(path.resolve(gamePath, `${recordedAt}_extra.json`), JSON.stringify(data))
+        await fs.writeFile(path.resolve(gamePath, `${recordedAt}_extra.json`), JSON.stringify(data, null, 4))
 
         gameData[recordedAt] = data
     }
 
-    return gameData
+    const frames = Object.values(gameData)
+
+    await fs.writeFile(path.resolve(gamePath, `output.json`), JSON.stringify(frames, null, 4))
+    
+    return frames
 }
 
 (async () => {
     console.log('Starting')
-    const data = await readGameFrames('15d4fada-449a-4d4b-b97d-967da96bdcb3')
+    const data = await processGameFrames('0bb776bb-e235-4e78-ab6d-d59a4b385506')
     console.log(data)
     console.log('Done')
 })()
