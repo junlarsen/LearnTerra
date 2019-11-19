@@ -1,0 +1,65 @@
+{
+  "PlayerName": "m1so",
+  "OpponentName": "decks_mediumelise_name",
+  "GameState": "InProgress",
+  "Screen": {
+    "ScreenWidth": 2560,
+    "ScreenHeight": 1440
+  },
+  "Rectangles": [
+    {
+      "CardID": 726552413,
+      "CardCode": "face",
+      "TopLeftX": 239,
+      "TopLeftY": 641,
+      "Width": 156,
+      "Height": 156,
+      "LocalPlayer": true
+    },
+    {
+      "CardID": 26385159,
+      "CardCode": "face",
+      "TopLeftX": 239,
+      "TopLeftY": 954,
+      "Width": 156,
+      "Height": 156,
+      "LocalPlayer": false
+    },
+    {
+      "CardID": 1346529611,
+      "CardCode": "01SI054",
+      "TopLeftX": 543,
+      "TopLeftY": 968,
+      "Width": 337,
+      "Height": 497,
+      "LocalPlayer": true
+    },
+    {
+      "CardID": 1877780046,
+      "CardCode": "01NX009",
+      "TopLeftX": 922,
+      "TopLeftY": 968,
+      "Width": 337,
+      "Height": 497,
+      "LocalPlayer": true
+    },
+    {
+      "CardID": 1026336652,
+      "CardCode": "01SI001",
+      "TopLeftX": 1300,
+      "TopLeftY": 968,
+      "Width": 337,
+      "Height": 497,
+      "LocalPlayer": true
+    },
+    {
+      "CardID": 1666830771,
+      "CardCode": "01SI041",
+      "TopLeftX": 1679,
+      "TopLeftY": 968,
+      "Width": 337,
+      "Height": 497,
+      "LocalPlayer": true
+    }
+  ]
+}

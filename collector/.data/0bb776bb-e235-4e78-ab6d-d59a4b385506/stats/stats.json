@@ -1,0 +1,74 @@
+[
+    {
+        "observedAt": [74, 235],
+        "cardCode": "01NX055",
+        "local": true,
+        "stats": {
+            "attack": 2,
+            "health": 1
+        }
+    },
+    {
+        "observedAt": [201, 237],
+        "cardCode": "01SI041",
+        "local": true,
+        "stats": {
+            "attack": 4,
+            "health": 4
+        }
+    },
+    {
+        "observedAt": [237, 266],
+        "cardCode": "01SI041",
+        "local": true,
+        "stats": {
+            "attack": 4,
+            "health": 3
+        }
+    },
+    {
+        "observedAt": [235, 266],
+        "cardCode": "01NX046",
+        "local": true,
+        "stats": {
+            "attack": 3,
+            "health": 1
+        }
+    },
+    {
+        "observedAt": [266, 290],
+        "cardCode": "01SI041",
+        "local": true,
+        "stats": {
+            "attack": 3,
+            "health": 3
+        }
+    },
+    {
+        "observedAt": [266, 290],
+        "cardCode": "01NX046",
+        "local": true,
+        "stats": {
+            "attack": 2,
+            "health": 1
+        }
+    },
+    {
+        "observedAt": [292, 363],
+        "cardCode": "01SI041",
+        "local": true,
+        "stats": {
+            "attack": 4,
+            "health": 3
+        }
+    },
+    {
+        "observedAt": [292, 363],
+        "cardCode": "01NX046",
+        "local": true,
+        "stats": {
+            "attack": 3,
+            "health": 1
+        }
+    }
+]
