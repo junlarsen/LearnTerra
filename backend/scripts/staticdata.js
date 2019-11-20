@@ -100,9 +100,21 @@ async function processGameFrames(gameId) {
     return frames
 }
 
+async function prependFinalData(gameId, content) {
+    const data = {
+        gameId,
+        frameCount: content.length,
+        game: content,
+        annotations: []
+    }
+
+    const outPath = path.resolve(__dirname, '../storage', `${gameId}.json`)
+    await fs.writeFile(outPath, JSON.stringify(data))
+}
+
 (async () => {
     console.log('Starting')
     const data = await processGameFrames('0bb776bb-e235-4e78-ab6d-d59a4b385506')
-    console.log(data)
+    await prependFinalData('0bb776bb-e235-4e78-ab6d-d59a4b385506', data)
     console.log('Done')
 })()

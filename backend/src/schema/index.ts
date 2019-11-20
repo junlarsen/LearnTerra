@@ -1,7 +1,7 @@
 export interface GameSchema {
   gameId: number
-  frameCount: number,
-  game: GameFrame,
+  frameCount: number
+  game: Array<GameFrame>
   annotations: Array<Annotation>
 }
 
@@ -9,6 +9,7 @@ export interface GameFrame {
   GameState: string
   Screen: ScreenData
   Rectangles: Array<Rectangle>
+  recordedAt: number
 }
 
 export interface ScreenData {
