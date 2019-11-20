@@ -1,6 +1,6 @@
 import path from 'path'
 import fs from 'fs-extra'
-import { GameSchema } from '../schema'
+import { DefaultFrame, GameFrame, GameSchema } from '../schema'
 
 export const STORAGE_DIRECTORY = path.resolve(__dirname, '../../../', 'storage')
 
@@ -13,9 +13,27 @@ export async function findGame(id: string): Promise<GameSchema | null> {
     return null
   }
 
-  const content = await fs.readFile(file, 'utf8')
+  const content = fromJson<GameSchema>(await fs.readFile(file, 'utf8'))
 
-  return fromJson<GameSchema>(content)
+  return {
+    ...content,
+    // @ts-ignore (this does indeed exist but it gets removed)
+    game: content.game.map((e) => sortFramePositions(e))
+  }
+}
+
+function sortFramePositions({ Screen, Rectangles, GameState, recordedAt }: DefaultFrame): GameFrame {
+  const frames = Rectangles.filter((e) => e.staticData?.type === 'Unit')
+
+  return {
+    Screen,
+    OpponentHand: frames.filter(e => e.TopLeftY === 1306),
+    OpponentBoard: frames.filter(e => e.TopLeftY === 1053),
+    UserBoard: frames.filter(e => e.TopLeftY === 601),
+    UserHand: frames.filter(e => e.TopLeftY === 346),
+    GameState,
+    recordedAt
+  } as GameFrame
 }
 
 // Get some nice type inference when parsing json

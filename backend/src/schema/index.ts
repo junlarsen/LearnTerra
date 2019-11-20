@@ -5,10 +5,22 @@ export interface GameSchema {
   annotations: Array<Annotation>
 }
 
-export interface GameFrame {
+// Frame from actual API
+export interface DefaultFrame {
   GameState: string
   Screen: ScreenData
   Rectangles: Array<Rectangle>
+  recordedAt: number
+}
+
+// Frame we transform to
+export interface GameFrame {
+  GameState: string
+  Screen: ScreenData
+  OpponentHand: Array<Rectangle>
+  OpponentBoard: Array<Rectangle>
+  UserHand: Array<Rectangle>
+  UserBoard: Array<Rectangle>
   recordedAt: number
 }
 
