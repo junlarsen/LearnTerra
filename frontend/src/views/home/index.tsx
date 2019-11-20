@@ -118,16 +118,13 @@ function Errored() {
 
 export function Home(): JSX.Element {
   const [loaded, setLoaded] = useState(false)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(true)
   const { game } = useParams()
 
   once('fetch data from api', () => {
     call(game!).then(res => {
       setLoaded(true)
-
-      if (!res) {
-        setError(true)
-      }
+      setError(!res)
     })
   })
 

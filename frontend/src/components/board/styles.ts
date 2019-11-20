@@ -47,7 +47,7 @@ export const StatBox = styled.div`
   text-align: center;
   height: 2rem;
   line-height: 2rem;
-  width: 33.333%;
+  width: 50%;
   color: ${props => props.theme.color.text};
   font-weight: bold;
   

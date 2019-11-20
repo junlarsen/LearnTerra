@@ -6,12 +6,11 @@ import { useSelector } from 'react-redux'
 type CardData = {
   id: string /* Card ID, image is ${id}-full.png */
   description: string
-  cost: number
   attack: number
   health: number
 }
 
-function CardComponent({ card: { id, description, cost, attack, health }}: PropsWithChildren<{ card: CardData }>): JSX.Element {
+function CardComponent({ card: { id, description, attack, health }}: PropsWithChildren<{ card: CardData }>): JSX.Element {
   return (
     <CardBox>
       <CardImage src={`https://supergrecko.com/cards/${id}-full.png`} />
@@ -19,7 +18,6 @@ function CardComponent({ card: { id, description, cost, attack, health }}: Props
 
       <StatBoxes>
         <StatBox className="orange">{attack}</StatBox>
-        <StatBox className="blue">{cost}</StatBox>
         <StatBox className="red">{health}</StatBox>
       </StatBoxes>
     </CardBox>
@@ -31,7 +29,6 @@ function cardOf({ staticData, currentStats: { cost, attack, health }, CardCode }
     <CardComponent card={{
       id: CardCode,
       description: staticData.desc || "No description provided",
-      cost,
       attack,
       health
     }} />
