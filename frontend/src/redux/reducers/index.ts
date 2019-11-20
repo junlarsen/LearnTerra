@@ -21,6 +21,12 @@ const app = (state: any = {}, action: any): ReduxRecord => {
         frame: action.frame
       }
 
+    case 'SET_FRAMES':
+      return {
+        ...state,
+        frames: action.frames
+      }
+
     default:
       return state
   }
