@@ -1,5 +1,5 @@
 import { ReduxRecord } from '../redux'
-import { GameFrame } from '../../types'
+import { GameFrame } from '../../../../backend/src/schema'
 
 // Set the game id
 export type SetGame = ReduxRecord & { id: string }

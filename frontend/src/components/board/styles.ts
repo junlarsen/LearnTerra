@@ -57,12 +57,17 @@ export const StatBox = styled.div`
 `
 
 export const CardDescription = styled.span`
-  margin: 0 0.5rem;
+  margin: 0;
   text-align: center;
-  font-size: 1.2rem;
+  overflow-y: scroll;
+  font-size: 1rem;
   font-family: "Roboto", sans-serif;
-  line-height: 1.2rem;
+  line-height: 1rem;
   color: ${props => props.theme.color.text};
+  
+  ::-webkit-scrollbar {
+    width: 0;
+  }
 `
 
 export const BoardRow = styled.div`

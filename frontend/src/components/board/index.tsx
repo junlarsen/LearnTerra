@@ -1,5 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 import { BoardWrapper, BoardRow, GameBoard, CardBox, CardDescription, CardImage, StatBoxes, StatBox } from './styles'
+import { GameFrame, Rectangle } from '../../../../backend/src/schema'
+import { useSelector } from 'react-redux'
 
 type CardData = {
   id: string /* Card ID, image is ${id}-full.png */
@@ -9,7 +11,7 @@ type CardData = {
   health: number
 }
 
-function Card({ card: { id, description, cost, attack, health }}: PropsWithChildren<{ card: CardData }>): JSX.Element {
+function CardComponent({ card: { id, description, cost, attack, health }}: PropsWithChildren<{ card: CardData }>): JSX.Element {
   return (
     <CardBox>
       <CardImage src={`https://supergrecko.com/cards/${id}-full.png`} />
@@ -24,21 +26,36 @@ function Card({ card: { id, description, cost, attack, health }}: PropsWithChild
   )
 }
 
+function cardOf({ staticData, currentStats: { cost, attack, health }, CardCode }: Rectangle): JSX.Element {
+  return (
+    <CardComponent card={{
+      id: CardCode,
+      description: staticData.desc || "No description provided",
+      cost,
+      attack,
+      health
+    }} />
+  )
+}
+
 export function Board() {
+  const { frame, frames } = useSelector((state: any) => state.app)
+  const current: GameFrame = frames[frame - 1]
+
   return (
     <BoardWrapper>
       <GameBoard>
-        <BoardRow className="dark"></BoardRow>
-        <BoardRow className="light"></BoardRow>
-        <BoardRow className="light"></BoardRow>
         <BoardRow className="dark">
-          <Card card={{
-            id: '01DE001',
-            description: 'Play or Strike: Create 2 Spinning Axe in hand.',
-            cost: 1,
-            attack: 1,
-            health: 1
-          }} />
+          {(current.OpponentHand.map(e => cardOf(e)))}
+        </BoardRow>
+        <BoardRow className="light">
+          {(current.OpponentBoard.map(e => cardOf(e)))}
+        </BoardRow>
+        <BoardRow className="light">
+          {(current.UserBoard.map(e => cardOf(e)))}
+        </BoardRow>
+        <BoardRow className="dark">
+          {(current.UserHand.map(e => cardOf(e)))}
         </BoardRow>
       </GameBoard>
     </BoardWrapper>

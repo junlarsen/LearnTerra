@@ -7,7 +7,7 @@ import { SidebarWrapper, BoardWrapper, Application, GameCode, Form, Input, Conta
 import { setFrame, setFrameLimit, setFrames, setGame } from '../../redux/actions'
 import { store } from '../../redux'
 import { useParams, withRouter, RouteComponentProps } from 'react-router'
-import { GameSchema } from '../../types'
+import { GameSchema } from '../../../../backend/src/schema'
 
 // temporary api endpoint
 export const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://supergrecko.com/api/v1'

@@ -22,10 +22,13 @@ export async function findGame(id: string): Promise<GameSchema | null> {
       || deck.OpponentHand.length
   }
 
+  // @ts-ignore
+  const frames = content.game.map((e) => sortFramePositions(e)).filter((e) => hasCards(e))
+
   return {
     ...content,
-    // @ts-ignore (this does indeed exist but it gets removed)
-    game: content.game.map((e) => sortFramePositions(e)).filter((e) => hasCards(e))
+    frameCount: frames.length,
+    game: frames
   }
 }
 
