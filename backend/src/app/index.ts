@@ -15,10 +15,17 @@ export async function findGame(id: string): Promise<GameSchema | null> {
 
   const content = fromJson<GameSchema>(await fs.readFile(file, 'utf8'))
 
+  const hasCards = (deck: GameFrame) => {
+    return deck.UserBoard.length
+      || deck.UserHand.length
+      || deck.OpponentBoard.length
+      || deck.OpponentHand.length
+  }
+
   return {
     ...content,
     // @ts-ignore (this does indeed exist but it gets removed)
-    game: content.game.map((e) => sortFramePositions(e))
+    game: content.game.map((e) => sortFramePositions(e)).filter((e) => hasCards(e))
   }
 }
 
