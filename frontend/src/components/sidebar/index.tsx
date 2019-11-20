@@ -3,7 +3,6 @@ import { ThemeContext } from 'styled-components'
 import { Row, RowHeader } from '../row'
 import { Content, AnnotationWrapper, Annotations, CommentBox } from './styles'
 import { GameCode, Button, Form, Textarea } from '../../views/home/styles'
-import { BASE_URL } from '../../views/home'
 import { useSelector } from 'react-redux'
 
 export function Sidebar() {
@@ -19,7 +18,7 @@ export function Sidebar() {
       </Row>
 
       <AnnotationWrapper>
-        <Annotations>One</Annotations>
+        <Annotations />
         <CommentBox>
           <Form onSubmit={async (event) => {
             event.preventDefault()

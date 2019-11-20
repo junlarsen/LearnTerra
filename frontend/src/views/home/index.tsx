@@ -4,9 +4,10 @@ import { Sidebar } from '../../components/sidebar'
 import { Frame } from '../../components/frame'
 import { Loader, Canvas, CanvasTitle, CanvasText } from '../../components/loading'
 import { SidebarWrapper, BoardWrapper, Application, GameCode, Form, Input, Container, Button, Anchor } from './styles'
-import { setFrame, setFrameLimit, setGame } from '../../redux/actions'
+import { setFrame, setFrameLimit, setFrames, setGame } from '../../redux/actions'
 import { store } from '../../redux'
 import { useParams, withRouter, RouteComponentProps } from 'react-router'
+import { GameSchema } from '../../../../backend/src/schema'
 
 // temporary api endpoint
 export const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://supergrecko.com/api/v1'
@@ -23,11 +24,12 @@ async function call(game: string): Promise<boolean> {
     return false
   }
 
-  const json = await res.json()
+  const json = await res.json() as GameSchema
 
   store.dispatch(setFrameLimit(json.frameCount))
   store.dispatch(setFrame(1))
   store.dispatch(setGame(json.gameId))
+  store.dispatch(setFrames(json.game))
 
   return true
 }
