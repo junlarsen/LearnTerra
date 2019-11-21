@@ -15,7 +15,10 @@
             "Width": 156,
             "Height": 156,
             "LocalPlayer": true,
-            "staticData": null
+            "staticData": null,
+            "currentStats": {
+                "health": 20
+            }
         }
     ],
     "recordedAt": 0
