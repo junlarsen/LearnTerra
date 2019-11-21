@@ -21,8 +21,8 @@ function CardComponent({ card: { id, name, description, attack, health, baseAtta
       <CardDescription>{description}</CardDescription>
 
       <StatBoxes>
-        <StatBox className={"orange " + (attack < baseAttack ? 'lowerStat' : '') + (attack > baseAttack ? 'higherStat' : '')} title="Attack">{attack}</StatBox>
-        <StatBox className={"red  " + (health < baseHealth ? 'lowerStat' : '') + (health > baseHealth ? 'higherStat' : '')} title="Health">{health}</StatBox>
+        <StatBox key="attack" className={"orange " + (attack < baseAttack ? 'lowerStat' : '') + (attack > baseAttack ? 'higherStat' : '')} title="Attack">{attack}</StatBox>
+        <StatBox key="defense" className={"red  " + (health < baseHealth ? 'lowerStat' : '') + (health > baseHealth ? 'higherStat' : '')} title="Health">{health}</StatBox>
       </StatBoxes>
     </CardBox>
   )
@@ -30,7 +30,7 @@ function CardComponent({ card: { id, name, description, attack, health, baseAtta
 
 function cardOf({ staticData, currentStats: { attack, health }, CardCode }: Rectangle): JSX.Element {
   return (
-    <CardComponent card={{
+    <CardComponent key={`card-${CardCode}-${Math.random().toString(16)}`} card={{
       id: CardCode,
       name: staticData.name || "Unknown name",
       description: staticData.desc || " ",

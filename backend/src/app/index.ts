@@ -22,7 +22,6 @@ export async function findGame(id: string): Promise<GameSchema | null> {
       || deck.OpponentHand.length
   }
 
-  console.log(content.game.Rectangles || "no")
   const frames = content.game.map((e: DefaultFrame) => sortFramePositions(e)).filter((e: GameFrame) => hasCards(e))
 
   return {
@@ -34,7 +33,11 @@ export async function findGame(id: string): Promise<GameSchema | null> {
 }
 
 function sortFramePositions({ Screen, Rectangles, GameState, recordedAt }: DefaultFrame): GameFrame {
-  const frames = Rectangles.filter((e) => e.staticData?.type === 'Unit')
+  const frames = Rectangles.filter((e) => ['Unit'].includes(e.staticData?.type))
+  const nexus = Rectangles.filter((e) => e.CardCode === 'face')
+
+  const user = nexus.filter((e) => e.LocalPlayer)[0]
+  const opponent = nexus.filter((e) => !e.LocalPlayer)[0]
 
   return {
     Screen,
@@ -43,7 +46,9 @@ function sortFramePositions({ Screen, Rectangles, GameState, recordedAt }: Defau
     UserBoard: frames.filter(e => e.TopLeftY === 601),
     UserHand: frames.filter(e => e.TopLeftY === 346),
     GameState,
-    recordedAt
+    recordedAt,
+    UserHealth: user.currentStats.health,
+    OpponentHealth: opponent.currentStats.health
   } as GameFrame
 }
 

@@ -21,7 +21,7 @@ export function Frame() {
     if (playing) {
       setTimeout(() => {
         store.dispatch(setFrame(frame + 1))
-      }, 500)
+      }, 400)
     }
   })
 
@@ -29,13 +29,13 @@ export function Frame() {
     <>
       <Row color={theme.color.light}>
         <Wrapper>
-          <SubItem>
+          <SubItem key="title">
             <RowHeader>
               <span>MATCH EVENTS{' '}</span>
               <GameCode>({frame}/{limit})</GameCode>
             </RowHeader>
           </SubItem>
-          <SubItem className="center">
+          <SubItem key="controller" className="center">
             <Wrapper className="controls">
               <RowAction disable={playing} className="button" role="button"
                          handler={(h: Function) => h(setFrame(frame - 1))}>
@@ -60,7 +60,6 @@ export function Frame() {
           </SubItem>
         </Wrapper>
       </Row>
-
       <Board/>
     </>
   )

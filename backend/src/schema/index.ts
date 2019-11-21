@@ -22,6 +22,8 @@ export interface GameFrame {
   UserHand: Array<Rectangle>
   UserBoard: Array<Rectangle>
   recordedAt: number
+  OpponentHealth: number
+  UserHealth: number
 }
 
 export interface ScreenData {
