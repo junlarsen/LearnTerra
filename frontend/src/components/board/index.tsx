@@ -18,7 +18,6 @@ function CardComponent({ card: { id, name, description, attack, health, baseAtta
     <CardBox>
       <CardImage src={`https://supergrecko.com/cards/${id}-full.png`} title={description} />
       <CardTitle>{name}</CardTitle>
-      <CardDescription title={description}>{description}</CardDescription>
 
       <StatBoxes>
         <StatBox className={"orange " + (attack < baseAttack ? 'lowerStat' : '') + (attack > baseAttack ? 'higherStat' : '')} title="Attack">{attack}</StatBox>

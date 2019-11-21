@@ -13,24 +13,27 @@ export const GameBoard = styled.div`
   height: inherit;
   display: flex;
   flex-direction: column;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('/board.png');
   width: 100%;
 `
 
 export const CardBox = styled.div`
   max-width: calc(16.667% - 1.5rem);
-  max-height: calc(100% - 1.5rem);
+  max-height: calc(100% - 1.5rem - 2.25rem);
   background: ${props => props.theme.color.light};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   
-  margin: 0.75rem;
+  margin: 0.75rem 0.75rem 0 0.75rem;
   box-shadow: 0 8.5px 19px rgba(0, 0, 0, 0.3), 0 7.5px 6px rgba(0, 0, 0, 0.22);
 `
 
 export const CardImage = styled.img`
-  max-width:100%;
-  max-height:100%;
+  max-width: 100%;
+  max-height: 100%;
 `
 
 export const StatBoxes = styled.div`
@@ -47,6 +50,7 @@ export const StatBox = styled.div`
   line-height: 2rem;
   width: 50%;
   color: ${props => props.theme.color.text};
+  font-family: "Roboto Mono", sans-serif;
   font-weight: bold;
   font-size: x-large;
   
@@ -64,11 +68,11 @@ export const StatBox = styled.div`
   &.lowerStat { color: #ff0000; }
 `
 
-export const CardTitle = styled.h1`
+export const CardTitle = styled.span`
   margin: 0 0.5rem;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.5rem;
-  line-height: 1.5rem;
+  font-family: "Roboto Mono", sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
   color: ${props => props.theme.color.text};
 `
 
@@ -92,12 +96,5 @@ export const BoardRow = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  
-  &.dark {
-    background: #f9f9f9;
-  }
-  
-  &.light {
-    background: #f2f2f2;
-  }
+  background: transparent;
 `
