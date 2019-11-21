@@ -43,6 +43,37 @@ export const StatBoxes = styled.div`
   height: 32px;
 `
 
+export const Overlay = styled.div`
+  position: fixed;
+  top: calc(64px + 48px);
+  left: 0;
+  width: calc(100% - 20vw);
+  height: calc(100% - 64px - 48px);
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  
+  &.hidden {
+    display: none;
+  }
+`
+
+export const OverlayTitle = styled.span`
+  font-size: 10rem;
+  color: ${props => props.theme.color.text};
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+`
+
+export const OverlayText = styled.span`
+  margin: 1rem 0;
+  font-size: 3rem;
+  color: ${props => props.theme.color.light};
+  font-family: "Roboto", sans-serif;
+`
+
 export const StatBox = styled.div`
   text-align: center;
   height: 2rem;
