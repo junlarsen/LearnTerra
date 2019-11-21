@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useContext } from 'react'
+import React, { PropsWithChildren, useContext, useState } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Row, RowHeader } from '../row'
 import {
@@ -35,94 +35,94 @@ function HealthbarComponent({ health }: PropsWithChildren<{ health: number }>): 
 }
 
 function HealthWidget({ username, health }: PropsWithChildren<{ username: string, health: number }>):
-  JSX.Element
-  {
-    return (
-      <HealthBlock>
-        <CommentHeaderBox>
-          <HealthUsername>{username}</HealthUsername>
-          <HealthUsername>{health || 0}/20</HealthUsername>
-        </CommentHeaderBox>
+  JSX.Element {
+  return (
+    <HealthBlock>
+      <CommentHeaderBox>
+        <HealthUsername>{username}</HealthUsername>
+        <HealthUsername>{Math.max(health || 0, 0)}/20</HealthUsername>
+      </CommentHeaderBox>
 
-        <HealthbarComponent health={health} />
-      </HealthBlock>
-    )
+      <HealthbarComponent health={Math.max(health || 0, 0)}/>
+    </HealthBlock>
+  )
+}
+
+export function Sidebar() {
+  const mapAnnotations = (annotations: Array<Annotation>): Array<JSX.Element> => {
+    const sorted = annotations.sort((a, b) => a.frame - b.frame)
+
+    return sorted.map(comment => {
+      return (
+        <Comment>
+          <CommentHeaderBox>
+            <CommentTitle>Frame {comment.frame}</CommentTitle>
+            <CommentTitle>{new Date(comment.date).toLocaleDateString()}</CommentTitle>
+          </CommentHeaderBox>
+          <CommentText>{comment.text}</CommentText>
+        </Comment>
+      )
+    })
   }
 
-  export function Sidebar() {
-    const mapAnnotations = (annotations: Array<Annotation>): Array<JSX.Element> => {
-      const sorted = annotations.sort((a, b) => a.frame - b.frame)
+  const theme = useContext(ThemeContext)
+  let value: string = ''
 
-      return sorted.map(comment => {
-        return (
-          <Comment>
-            <CommentHeaderBox>
-              <CommentTitle>Frame {comment.frame}</CommentTitle>
-              <CommentTitle>{new Date(comment.date).toLocaleDateString()}</CommentTitle>
-            </CommentHeaderBox>
-            <CommentText>{comment.text}</CommentText>
-          </Comment>
-        )
-      })
-    }
+  const { frame, id, comments } = useSelector((state: any) => state.app)
+  const frames = useSelector((state: any) => state.app.frames)
+  const current = frames[frame - 1]
 
-    const theme = useContext(ThemeContext)
-    let value: string = ''
+  return (
+    <Content>
+      <Row className="absolute" color={theme.color.secondary}>
+        <RowHeader>PLAYERS</RowHeader>
+      </Row>
 
-    const { frame, id, comments } = useSelector((state: any) => state.app)
-    console.log(frame.UserHealth, frame.OpponentHealth)
+      <SidebarWrapper>
+        <div style={{ 'margin': '48px 0 0 0' }}>
+          <HealthWidget username="Opponent" health={current.OpponentHealth}/>
+          <HealthWidget username="Player" health={current.UserHealth}/>
+        </div>
+      </SidebarWrapper>
 
-    return (
-      <Content>
-        <Row className="absolute" color={theme.color.secondary}>
-          <RowHeader>PLAYERS</RowHeader>
-        </Row>
+      <Row color={theme.color.dark}>
+        <RowHeader>MATCH TIMELINE</RowHeader>
+      </Row>
 
-        <SidebarWrapper>
-          <div style={{ 'margin': '48px 0 0 0' }}>
-            <HealthWidget username="Opponent" health={frame.OpponentHealth}/>
-            <HealthWidget username="Player" health={frame.UserHealth}/>
-          </div>
-        </SidebarWrapper>
+      <SidebarWrapper>
+        <Annotations children={mapAnnotations(comments)}/>
+        <CommentBox>
+          <Form onSubmit={async (event) => {
+            event.preventDefault()
 
-        <Row color={theme.color.dark}>
-          <RowHeader>MATCH TIMELINE</RowHeader>
-        </Row>
+            // @ts-ignore reset form fields
+            event.target.reset()
 
-        <SidebarWrapper>
-          <Annotations children={mapAnnotations(comments)}/>
-          <CommentBox>
-            <Form onSubmit={async (event) => {
-              event.preventDefault()
+            store.dispatch(addComment({
+              date: Date.now(),
+              text: value,
+              frame: frame
+            }))
 
-              // @ts-ignore reset form fields
-              event.target.reset()
-
-              store.dispatch(addComment({
-                date: Date.now(),
+            await fetch(`${BASE_URL}/annotations/${id}/${frame}`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
                 text: value,
                 frame: frame
-              }))
-
-              await fetch(`${BASE_URL}/annotations/${id}/${frame}`, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  text: value,
-                  frame: frame
-                })
               })
-            }}>
-              <Textarea placeholder={`Leave a comment for frame #${frame}..`} required rows={5} onChange={(event) => {
-                value = event.target.value
-              }}/>
+            })
+          }}>
+            <Textarea placeholder={`Leave a comment for frame #${frame}..`} required rows={5} onChange={(event) => {
+              value = event.target.value
+            }}/>
 
-              <Button type="submit" style={{ color: '#f5f5f5' }}>Submit Comment</Button>
-            </Form>
-          </CommentBox>
-        </SidebarWrapper>
-      </Content>
-    )
-  }
+            <Button type="submit" style={{ color: '#f5f5f5' }}>Submit Comment</Button>
+          </Form>
+        </CommentBox>
+      </SidebarWrapper>
+    </Content>
+  )
+}
