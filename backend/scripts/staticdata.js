@@ -52,8 +52,22 @@ async function processGameFrames(gameId) {
         data['Rectangles'] = data['Rectangles'].map(rect => {
             const cardDefinitions = staticData.filter(cardDef => cardDef['cardCode'] === rect['CardCode'])
 
+            const matchedStatsOutput = statsOutput.filter(
+                statEntry => rect['CardCode'] === statEntry['cardCode'] 
+                    && recordedAt >= statEntry['observedAt'][0]
+                    && recordedAt < statEntry['observedAt'][1]
+                    && rect['LocalPlayer'] === statEntry['local']
+            )
+
             if (cardDefinitions.length !== 1) {
-                return Object.assign({}, rect, {'staticData': null})
+                return Object.assign(
+                    {},
+                    rect,
+                    {
+                        'staticData': null,
+                        'currentStats': rect['CardCode'] === 'face' && matchedStatsOutput.length > 0 ? matchedStatsOutput[0]['stats'] : null,
+                    }
+                )
             }
 
             const cardDefinition = cardDefinitions[0]
@@ -63,13 +77,6 @@ async function processGameFrames(gameId) {
                 'health': cardDefinition['health'],
                 'cost': cardDefinition['cost'],
             }
-
-            const matchedStatsOutput = statsOutput.filter(
-                statEntry => rect['CardCode'] === statEntry['cardCode'] 
-                    && recordedAt >= statEntry['observedAt'][0]
-                    && recordedAt < statEntry['observedAt'][1]
-                    && rect['LocalPlayer'] === statEntry['local']
-            )
 
             if (matchedStatsOutput.length === 1) {
                 stats = Object.assign({}, stats, matchedStatsOutput[0]['stats'])

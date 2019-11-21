@@ -15,7 +15,10 @@
             "Width": 156,
             "Height": 156,
             "LocalPlayer": true,
-            "staticData": null
+            "staticData": null,
+            "currentStats": {
+                "health": 18
+            }
         },
         {
             "CardID": 26385159,
@@ -25,7 +28,10 @@
             "Width": 156,
             "Height": 156,
             "LocalPlayer": false,
-            "staticData": null
+            "staticData": null,
+            "currentStats": {
+                "health": 20
+            }
         },
         {
             "CardID": 1666830771,
