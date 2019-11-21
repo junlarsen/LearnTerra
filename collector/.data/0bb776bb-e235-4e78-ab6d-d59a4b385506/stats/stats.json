@@ -70,5 +70,79 @@
             "attack": 3,
             "health": 1
         }
+    },
+
+
+    {
+        "observedAt": [0, 72],
+        "cardCode": "face",
+        "local": true,
+        "stats": {
+            "health": 20
+        }
+    },
+    {
+        "observedAt": [0, 363],
+        "cardCode": "face",
+        "local": false,
+        "stats": {
+            "health": 20
+        }
+    },
+    {
+        "observedAt": [72, 74],
+        "cardCode": "face",
+        "local": true,
+        "stats": {
+            "health": 18
+        }
+    },
+    {
+        "observedAt": [74, 175],
+        "cardCode": "face",
+        "local": true,
+        "stats": {
+            "health": 17
+        }
+    },
+    {
+        "observedAt": [175, 278],
+        "cardCode": "face",
+        "local": true,
+        "stats": {
+            "health": 15
+        }
+    },
+    {
+        "observedAt": [278, 285],
+        "cardCode": "face",
+        "local": true,
+        "stats": {
+            "health": 15
+        }
+    },
+    {
+        "observedAt": [285, 314],
+        "cardCode": "face",
+        "local": true,
+        "stats": {
+            "health": 10
+        }
+    },
+    {
+        "observedAt": [314, 341],
+        "cardCode": "face",
+        "local": true,
+        "stats": {
+            "health": 5
+        }
+    },
+    {
+        "observedAt": [341, 363],
+        "cardCode": "face",
+        "local": true,
+        "stats": {
+            "health": -3
+        }
     }
 ]
