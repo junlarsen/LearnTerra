@@ -60,4 +60,5 @@ export interface Rectangle {
 export interface Annotation {
   frame: number
   text: string
+  date: number
 }

@@ -33,6 +33,18 @@ const app = (state: any = {}, action: any): ReduxRecord => {
         playing: action.playing
       }
 
+    case 'SET_COMMENTS':
+      return {
+        ...state,
+        comments: action.comments
+      }
+
+    case 'ADD_COMMENT':
+      return {
+        ...state,
+        comments: [...state.comments, action.comment]
+      }
+
     default:
       return state
   }

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { findGame, updateGame } from '../app/'
+import { addAnnotations, findGame } from '../app/'
 
 export const get = async (req: Request, res: Response) => {
   const game = await findGame(req.params.game || 'unknown')
@@ -28,15 +28,10 @@ export const comment = async (req: Request, res: Response) => {
     return res.status(400).json({ status: 400, message: 'Invalid API Schema' })
   }
 
-  updateGame(req.params.game, {
-    ...game,
-    annotations: [
-      ...game.annotations || [],
-      {
-        text: body.text,
-        frame: body.frame
-      }
-    ]
+  addAnnotations(req.params.game, {
+    text: body.text,
+    frame: body.frame,
+    date: Date.now()
   }).catch(console.error)
 
   return res.status(200).json({ status: 200, message: 'Success' })

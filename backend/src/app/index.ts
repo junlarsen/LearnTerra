@@ -1,6 +1,6 @@
 import path from 'path'
 import fs from 'fs-extra'
-import { DefaultFrame, GameFrame, GameSchema } from '../schema'
+import { Annotation, DefaultFrame, GameFrame, GameSchema } from '../schema'
 
 export const STORAGE_DIRECTORY = path.resolve(__dirname, '../../../', 'storage')
 
@@ -13,7 +13,7 @@ export async function findGame(id: string): Promise<GameSchema | null> {
     return null
   }
 
-  const content = fromJson<GameSchema>(await fs.readFile(file, 'utf8'))
+  const content = fromJson<any>(await fs.readFile(file, 'utf8'))
 
   const hasCards = (deck: GameFrame) => {
     return deck.UserBoard.length
@@ -22,13 +22,14 @@ export async function findGame(id: string): Promise<GameSchema | null> {
       || deck.OpponentHand.length
   }
 
-  // @ts-ignore
-  const frames = content.game.map((e) => sortFramePositions(e)).filter((e) => hasCards(e))
+  console.log(content.game.Rectangles || "no")
+  const frames = content.game.map((e: DefaultFrame) => sortFramePositions(e)).filter((e: GameFrame) => hasCards(e))
 
   return {
     ...content,
     frameCount: frames.length,
-    game: frames
+    game: frames,
+    annotations: content.annotations
   }
 }
 
@@ -61,14 +62,16 @@ export async function gameExists(id: string): Promise<boolean> {
 }
 
 // Update a game with new data
-export async function updateGame(id: string, payload: GameSchema): Promise<boolean> {
+export async function addAnnotations(id: string, annotation: Annotation): Promise<boolean> {
   if (!await gameExists(id)) {
     return false
   }
 
   const file = path.resolve(STORAGE_DIRECTORY, `${id}.json`)
+  const content = fromJson<GameSchema>(await fs.readFile(file, 'utf8'))
+  content.annotations.push(annotation)
 
-  await fs.writeFile(file, JSON.stringify(payload))
+  await fs.writeFile(file, JSON.stringify(content))
 
   return true
 }

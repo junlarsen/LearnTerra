@@ -2,14 +2,18 @@ import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Row, RowHeader } from '../row'
 import { Content, AnnotationWrapper, Annotations, CommentBox } from './styles'
-import { GameCode, Button, Form, Textarea } from '../../views/home/styles'
+import { Button, Form, Textarea } from '../../views/home/styles'
 import { useSelector } from 'react-redux'
+import { BASE_URL } from '../../views/home'
+import { Annotation } from '../../../../backend/src/schema'
+import { addComment } from '../../redux/actions'
+import { store } from '../../redux'
 
 export function Sidebar() {
   const theme = useContext(ThemeContext)
   let value: string = ""
 
-  const { frame } = useSelector((state: any) => state.app)
+  const { frame, id, comments } = useSelector((state: any) => state.app)
 
   return (
     <Content>
@@ -18,15 +22,32 @@ export function Sidebar() {
       </Row>
 
       <AnnotationWrapper>
-        <Annotations />
+        <Annotations>
+          {comments.map((e: Annotation) => e.text)}
+        </Annotations>
         <CommentBox>
           <Form onSubmit={async (event) => {
             event.preventDefault()
 
-            // TODO: call backend
-            await /* fetch() */ void 0
+            // @ts-ignore reset form fields
+            event.target.reset()
 
-            window.location.reload()
+            store.dispatch(addComment({
+              date: Date.now(),
+              text: value,
+              frame: frame
+            }))
+
+            await fetch(`${BASE_URL}/annotations/${id}/${frame}`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                text: value,
+                frame: frame
+              })
+            })
           }}>
             <Textarea placeholder={`Leave a comment for frame #${frame}..`} required rows={5} onChange={(event) => {
               value = event.target.value

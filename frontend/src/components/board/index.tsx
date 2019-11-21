@@ -18,6 +18,7 @@ function CardComponent({ card: { id, name, description, attack, health, baseAtta
     <CardBox>
       <CardImage src={`https://supergrecko.com/cards/${id}-full.png`} title={description} />
       <CardTitle>{name}</CardTitle>
+      <CardDescription>{description}</CardDescription>
 
       <StatBoxes>
         <StatBox className={"orange " + (attack < baseAttack ? 'lowerStat' : '') + (attack > baseAttack ? 'higherStat' : '')} title="Attack">{attack}</StatBox>
@@ -32,7 +33,7 @@ function cardOf({ staticData, currentStats: { attack, health }, CardCode }: Rect
     <CardComponent card={{
       id: CardCode,
       name: staticData.name || "Unknown name",
-      description: staticData.desc || "No description provided",
+      description: staticData.desc || " ",
       attack,
       health,
       baseAttack: staticData.attack,

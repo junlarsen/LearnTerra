@@ -21,7 +21,7 @@ export const GameBoard = styled.div`
 
 export const CardBox = styled.div`
   max-width: calc(16.667% - 1.5rem);
-  max-height: calc(100% - 1.5rem - 2.25rem);
+  max-height: calc(100% - 1.5rem - .25rem);
   background: ${props => props.theme.color.light};
   display: flex;
   flex-direction: column;
@@ -74,6 +74,7 @@ export const CardTitle = styled.span`
   text-transform: uppercase;
   font-size: 1rem;
   color: ${props => props.theme.color.text};
+  font-weight: bold;
 `
 
 export const CardDescription = styled.span`

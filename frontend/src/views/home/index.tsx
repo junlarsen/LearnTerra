@@ -1,16 +1,16 @@
-import React, { PropsWithChildren, useState } from 'react'
+import React, { FormEvent, PropsWithChildren, useState } from 'react'
 import { Navbar, NavText } from '../../components/navbar'
 import { Sidebar } from '../../components/sidebar'
 import { Frame } from '../../components/frame'
 import { Loader, Canvas, CanvasTitle, CanvasText } from '../../components/loading'
 import { SidebarWrapper, BoardWrapper, Application, GameCode, Form, Input, Container, Button, Anchor } from './styles'
-import { setFrame, setFrameLimit, setFrames, setGame } from '../../redux/actions'
+import { setComments, setFrame, setFrameLimit, setFrames, setGame } from '../../redux/actions'
 import { store } from '../../redux'
 import { useParams, withRouter, RouteComponentProps } from 'react-router'
 import { GameSchema } from '../../../../backend/src/schema'
 
 // temporary api endpoint
-export const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://supergrecko.com/api/v1'
+export const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://supergrecko.com/api/v1' || 'http://localhost:8001/api/v1'
 
 async function call(game: string): Promise<boolean> {
   const res = await fetch(`${BASE_URL}/game/${game}`, {
@@ -30,6 +30,7 @@ async function call(game: string): Promise<boolean> {
   store.dispatch(setFrame(1))
   store.dispatch(setGame(json.gameId))
   store.dispatch(setFrames(json.game))
+  store.dispatch(setComments(json.annotations))
 
   return true
 }
