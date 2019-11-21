@@ -14,9 +14,9 @@ export function RowHeader({ children }: PropsWithChildren<{}> & HTMLAttributes<{
   )
 }
 
-export function RowActionComponent({ children, handler, dispatch }: PropsWithChildren<{ handler: (dispatch: Function) => void }> & HTMLAttributes<{}> & DispatchProp): JSX.Element {
+export function RowActionComponent({ children, handler, dispatch, disable }: PropsWithChildren<{ disable: boolean, handler: (dispatch: Function) => void }> & HTMLAttributes<{}> & DispatchProp): JSX.Element {
   return (
-    <NormalButton onClick={() => handler(dispatch)}>
+    <NormalButton disabled={disable} onClick={() => handler(dispatch)}>
       <Icon>{children}</Icon>
     </NormalButton>
   )

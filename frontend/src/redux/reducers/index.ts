@@ -27,6 +27,12 @@ const app = (state: any = {}, action: any): ReduxRecord => {
         frames: action.frames
       }
 
+    case 'SET_PLAYING':
+      return {
+        ...state,
+        playing: action.playing
+      }
+
     default:
       return state
   }

@@ -23,8 +23,14 @@ export const setFrame = (frame: number): SetFrame => ({
 })
 
 // Set the frames for the current game
-export type SetFrames = ReduxRecord & Array<GameFrame>
-export const setFrames = (frames: Array<GameFrame>) => ({
+export type SetFrames = ReduxRecord & { frames: Array<GameFrame> }
+export const setFrames = (frames: Array<GameFrame>): SetFrames => ({
   type: 'SET_FRAMES',
   frames
+})
+
+export type SetPlaying = ReduxRecord & { playing: boolean }
+export const setPlaying = (playing: boolean): SetPlaying => ({
+  type: 'SET_PLAYING',
+  playing
 })

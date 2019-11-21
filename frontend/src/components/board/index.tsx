@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import { BoardWrapper, BoardRow, GameBoard, CardBox, CardDescription, CardImage, StatBoxes, StatBox } from './styles'
+import { BoardWrapper, BoardRow, GameBoard, CardBox, CardDescription, CardImage, StatBoxes, StatBox, CardTitle } from './styles'
 import { GameFrame, Rectangle } from '../../../../backend/src/schema'
 import { useSelector } from 'react-redux'
 
@@ -17,7 +17,8 @@ function CardComponent({ card: { id, name, description, attack, health, baseAtta
   return (
     <CardBox>
       <CardImage src={`https://supergrecko.com/cards/${id}-full.png`} title={description} />
-      <CardDescription title={description}>{name}</CardDescription>
+      <CardTitle>{name}</CardTitle>
+      <CardDescription title={description}>{description}</CardDescription>
 
       <StatBoxes>
         <StatBox className={"orange " + (attack < baseAttack ? 'lowerStat' : '') + (attack > baseAttack ? 'higherStat' : '')} title="Attack">{attack}</StatBox>
@@ -27,7 +28,7 @@ function CardComponent({ card: { id, name, description, attack, health, baseAtta
   )
 }
 
-function cardOf({ staticData, currentStats: { cost, attack, health }, CardCode }: Rectangle): JSX.Element {
+function cardOf({ staticData, currentStats: { attack, health }, CardCode }: Rectangle): JSX.Element {
   return (
     <CardComponent card={{
       id: CardCode,

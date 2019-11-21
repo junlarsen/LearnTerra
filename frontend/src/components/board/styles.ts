@@ -17,19 +17,18 @@ export const GameBoard = styled.div`
 `
 
 export const CardBox = styled.div`
-  max-width: calc(16.667% - 3rem);
-  max-height: calc(100% - 3rem);
+  max-width: calc(16.667% - 1.5rem);
+  max-height: calc(100% - 1.5rem);
   background: ${props => props.theme.color.light};
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   
-  margin: 1.5rem;
+  margin: 0.75rem;
+  box-shadow: 0 8.5px 19px rgba(0, 0, 0, 0.3), 0 7.5px 6px rgba(0, 0, 0, 0.22);
 `
 
 export const CardImage = styled.img`
-  margin: 0.5rem 0.5rem 0 0.5rem;
   max-width:100%;
   max-height:100%;
 `
@@ -51,16 +50,30 @@ export const StatBox = styled.div`
   font-weight: bold;
   font-size: x-large;
   
-  &.red { background: #7b0000; background: linear-gradient(180deg, rgba(165,19,35,1) 0%, rgba(121,1,2,1) 100%); border-radius: 0px 0px 5px 0px; }
-  &.blue { background: #1976d2 }
-  &.orange { background: #dd6b00; background: linear-gradient(180deg, rgba(253,137,0,1) 0%, rgba(193,90,0,1) 100%); border-radius: 0px 0px 0px 5px; }
+  &.red {
+    background: #7b0000;
+    background: linear-gradient(180deg, rgba(165,19,35,1) 0%, rgba(121,1,2,1) 100%);
+  }
+  
+  &.orange { 
+    background: #dd6b00;
+    background: linear-gradient(180deg, rgba(253,137,0,1) 0%, rgba(193,90,0,1) 100%);
+  }
+  
   &.higherStat { color: #00ff00; }
   &.lowerStat { color: #ff0000; }
 `
 
+export const CardTitle = styled.h1`
+  margin: 0 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  color: ${props => props.theme.color.text};
+`
+
 export const CardDescription = styled.span`
-  margin: 0;
-  text-align: center;
+  margin: 0 0.5rem;
   overflow-y: scroll;
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
