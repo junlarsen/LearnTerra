@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Row, RowHeader } from '../row'
-import { Content, AnnotationWrapper, Annotations, CommentBox } from './styles'
+import { Content, AnnotationWrapper, Annotations, CommentBox, Comment, CommentHeaderBox, CommentText, CommentTitle } from './styles'
 import { Button, Form, Textarea } from '../../views/home/styles'
 import { useSelector } from 'react-redux'
 import { BASE_URL } from '../../views/home'
@@ -10,6 +10,22 @@ import { addComment } from '../../redux/actions'
 import { store } from '../../redux'
 
 export function Sidebar() {
+  const mapAnnotations = (annotations: Array<Annotation>): Array<JSX.Element> => {
+    const sorted = annotations.sort((a, b) => a.frame - b.frame)
+
+    return sorted.map(comment => {
+      return (
+        <Comment>
+          <CommentHeaderBox>
+            <CommentTitle>Frame {comment.frame}</CommentTitle>
+            <CommentTitle>{new Date(comment.date).toLocaleDateString()}</CommentTitle>
+          </CommentHeaderBox>
+          <CommentText>{comment.text}</CommentText>
+        </Comment>
+      )
+    })
+  }
+
   const theme = useContext(ThemeContext)
   let value: string = ""
 
@@ -22,9 +38,7 @@ export function Sidebar() {
       </Row>
 
       <AnnotationWrapper>
-        <Annotations>
-          {comments.map((e: Annotation) => e.text)}
-        </Annotations>
+        <Annotations children={mapAnnotations(comments)} />
         <CommentBox>
           <Form onSubmit={async (event) => {
             event.preventDefault()
