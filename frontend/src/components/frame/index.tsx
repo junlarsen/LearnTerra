@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ThemeContext } from 'styled-components'
 import { useSelector } from 'react-redux'
 
-import { Wrapper, GameCode } from './styles'
+import { Wrapper, GameCode, SubItem } from './styles'
 import { Row, RowHeader, RowAction } from '../row'
 import { Board } from '../board'
 import { setFrame, setPlaying } from '../../redux/actions'
@@ -15,7 +15,7 @@ import { store } from '../../redux'
 
 export function Frame() {
   const theme = useContext(ThemeContext)
-  const { limit, frame, id, playing } = useSelector((state: any) => state.app)
+  const { limit, frame, playing } = useSelector((state: any) => state.app)
 
   useEffect(() => {
     if (playing) {
@@ -29,13 +29,16 @@ export function Frame() {
     <>
       <Row color={theme.color.light}>
         <Wrapper>
-          <RowHeader>
-            <span>MATCH EVENTS{' '}</span>
-            <GameCode>({frame}/{limit})</GameCode>
-          </RowHeader>
-          <div>
+          <SubItem>
+            <RowHeader>
+              <span>MATCH EVENTS{' '}</span>
+              <GameCode>({frame}/{limit})</GameCode>
+            </RowHeader>
+          </SubItem>
+          <SubItem className="center">
             <Wrapper className="controls">
-              <RowAction disable={playing} className="button" role="button" handler={(h: Function) => h(setFrame(frame - 1))}>
+              <RowAction disable={playing} className="button" role="button"
+                         handler={(h: Function) => h(setFrame(frame - 1))}>
                 <img alt="Previous Event" title="Previous Event" src={NavigateBefore}/>
               </RowAction>
               {playing && <RowAction disable={false} className="button" role="button" handler={(h: Function) => {
@@ -49,12 +52,12 @@ export function Frame() {
               }}>
                 <img alt="Start Autoplay" title="Start Autoplay" src={Play}/>
               </RowAction>}
-              <RowAction disable={playing} className="button" role="button" handler={(h: Function) => h(setFrame(frame + 1))}>
+              <RowAction disable={playing} className="button" role="button"
+                         handler={(h: Function) => h(setFrame(frame + 1))}>
                 <img alt="Next Event" title="Next Event" src={NavigateAfter}/>
               </RowAction>
             </Wrapper>
-          </div>
-          <RowHeader>GAME CODE: <GameCode>{id || '000000'}</GameCode></RowHeader>
+          </SubItem>
         </Wrapper>
       </Row>
 
