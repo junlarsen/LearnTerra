@@ -2,10 +2,14 @@ import React, { PropsWithChildren, HTMLAttributes } from 'react'
 import { Wrapper, Title, Icon, NormalButton } from './styles'
 import { connect, DispatchProp } from 'react-redux'
 
-export function Row({ color, children }: PropsWithChildren<{ color: string }>): JSX.Element {
+export function Row({ className, color, children }: PropsWithChildren<{ color: string, className: string }>): JSX.Element {
   return (
-    <Wrapper color={color}>{children}</Wrapper>
+    <Wrapper className={className} color={color}>{children}</Wrapper>
   )
+}
+
+Row.defaultProps = {
+  className: ''
 }
 
 export function RowHeader({ children }: PropsWithChildren<{}> & HTMLAttributes<{}>): JSX.Element {

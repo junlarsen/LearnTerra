@@ -5,21 +5,48 @@ export const Content = styled.div`
   background: ${props => props.theme.color.dark};
 `
 
-export const AnnotationWrapper = styled.div`
+export const SidebarWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `
 
 export const Annotations = styled.div`
-  height: calc(100vh - 220px - 48px - 96px); /* 100 vh - comment box - row - navbar */
+  height: calc(100vh - 220px - 48px - 96px - 152px); /* 100 vh - comment box - row - navbar - health boxes */
   display: flex;
   flex-direction: column;
   overflow-y: auto;
 `
 
+export const Healthbar = styled.div`
+  background: #5ceb52;
+  height: 12px;
+  width: calc((100% / 20) * ${(props: any) => props.health});
+`
+
+export const BasicBar = styled.div`
+  width: 100%;
+  height: 12px;
+  background-color: ${props => props.theme.color.light};
+`
+
+export const HealthBlock = styled.div`
+  padding: 16px;
+  height: 44px;
+  background-color: ${props => props.theme.color.secondary};
+  display: flex;
+  flex-direction: column;
+`
+
+export const HealthUsername = styled.span`
+  margin: 8px 0;
+  font-family: "Roboto Mono", sans-serif;
+  color: ${props => props.theme.color.text};
+  font-size: 1.1rem;
+`
+
 export const CommentBox = styled.div`
   padding: 16px;
-  height: 220px;
+  height: calc(220px - 48px);
   background-color: ${props => props.theme.color.light};
 `
 
