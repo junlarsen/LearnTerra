@@ -1,18 +1,18 @@
-# {project}
+# LearnTerra
 
-{project}, a web-based Legends of Runeterra replay tool.
+LearnTerra, a web-based Legends of Runeterra replay tool.
 
 # Overview
 
 ## Table of Contents
 
-- [What is {project}?](#what-is-{project})
+- [What is LearnTerra?](#what-is-learnterra)
 - [Implemented Features](#implemented-features)
 - [Documentation](#documentation)
 - [Known Issues](#known-issues)
 - [Legal](#legal)
 
-## What is {project}
+## What is LearnTerra
 
 This project was built for the Riot Games API Challenge (2019).
 
@@ -22,11 +22,11 @@ The application allows you to replay a Legends of Runeterra match recorded with 
 
 #### Comment System
 
-{project} is aimed at user improvement and collaboration. We implemented a basic comment system for the replay. You can leave comments for each frame which everyone else will be able to view. 
+LearnTerra is aimed at user improvement and collaboration. We implemented a basic comment system for the replay. You can leave comments for each frame which everyone else will be able to view. 
 
 #### Frame Splitting
 
-{project} splits the game into a set of frames. These frames can be navigated through the navigation bar. The game can be automatically played with the "Play" button. This traverses the frames with a 400 millisecond delay between each frame.
+LearnTerra splits the game into a set of frames. These frames can be navigated through the navigation bar. The game can be automatically played with the "Play" button. This traverses the frames with a 400 millisecond delay between each frame.
 
 ## Documentation
 
@@ -48,8 +48,8 @@ Spells are currently not visualized in the replay. This means some frames will n
 
 #### License
 
-The project is licensed under the {license}. A copy of this license can be found inside the LICENSE file.
+The project is licensed under the MIT. A copy of this license can be found inside the LICENSE file.
 
 #### Riot Games
 
-{project} was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games.  Riot Games does not endorse or sponsor this project.
+LearnTerra was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games.  Riot Games does not endorse or sponsor this project.

@@ -50,7 +50,7 @@ function Main(): JSX.Element {
   return (
     <>
       <Navbar>
-        <NavText title="SECRET PROJECT"/>
+        <NavText title="LEARNTERRA"/>
       </Navbar>
       <div>
         <Application>
@@ -73,7 +73,7 @@ function WelcomeComponent({ history }: PropsWithChildren<{}> & RouteComponentPro
     <Canvas>
       <div>
         <Container>
-          <CanvasTitle>SECRET PROJECT</CanvasTitle>
+          <CanvasTitle>LEARNTERRA</CanvasTitle>
           <CanvasText>A Legends of Runeterra replay engine</CanvasText>
         </Container>
 
