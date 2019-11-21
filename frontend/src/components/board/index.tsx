@@ -5,20 +5,23 @@ import { useSelector } from 'react-redux'
 
 type CardData = {
   id: string /* Card ID, image is ${id}-full.png */
+  name: string
   description: string
   attack: number
   health: number
+  baseAttack: number
+  baseHealth: number
 }
 
-function CardComponent({ card: { id, description, attack, health }}: PropsWithChildren<{ card: CardData }>): JSX.Element {
+function CardComponent({ card: { id, name, description, attack, health, baseAttack, baseHealth }}: PropsWithChildren<{ card: CardData }>): JSX.Element {
   return (
     <CardBox>
-      <CardImage src={`https://supergrecko.com/cards/${id}-full.png`} />
-      <CardDescription>{description}</CardDescription>
+      <CardImage src={`https://supergrecko.com/cards/${id}-full.png`} title={description} />
+      <CardDescription title={description}>{name}</CardDescription>
 
       <StatBoxes>
-        <StatBox className="orange">{attack}</StatBox>
-        <StatBox className="red">{health}</StatBox>
+        <StatBox className={"orange " + (attack < baseAttack ? 'lowerStat' : '') + (attack > baseAttack ? 'higherStat' : '')} title="Attack">{attack}</StatBox>
+        <StatBox className={"red  " + (health < baseHealth ? 'lowerStat' : '') + (health > baseHealth ? 'higherStat' : '')} title="Health">{health}</StatBox>
       </StatBoxes>
     </CardBox>
   )
@@ -28,9 +31,12 @@ function cardOf({ staticData, currentStats: { cost, attack, health }, CardCode }
   return (
     <CardComponent card={{
       id: CardCode,
+      name: staticData.name || "Unknown name",
       description: staticData.desc || "No description provided",
       attack,
-      health
+      health,
+      baseAttack: staticData.attack,
+      baseHealth: staticData.health
     }} />
   )
 }

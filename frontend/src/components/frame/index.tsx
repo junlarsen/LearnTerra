@@ -18,15 +18,15 @@ export function Frame() {
     <>
       <Row color={theme.color.light}>
         <Wrapper>
-          <RowHeader>MATCH FRAMES</RowHeader>
+          <RowHeader>MATCH EVENTS</RowHeader>
           <div>
             <Wrapper className="controls">
               <RowAction className="button" role="button" handler={(h: Function) => h(setFrame(frame - 1))}>
-                <img alt="Previous Frame" src={NavigateBefore}/>
+                <img alt="Previous Event" title="Previous Event" src={NavigateBefore}/>
               </RowAction>
               <RowHeader>{frame}/{limit}</RowHeader>
               <RowAction className="button" role="button" handler={(h: Function) => h(setFrame(frame + 1))}>
-                <img alt="Next Frame" src={NavigateAfter}/>
+                <img alt="Next Event" title="Next Event" src={NavigateAfter}/>
               </RowAction>
             </Wrapper>
           </div>

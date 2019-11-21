@@ -35,7 +35,6 @@ export const CardImage = styled.img`
 `
 
 export const StatBoxes = styled.div`
-  border-top: 2px solid #f5f5f5;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -50,10 +49,13 @@ export const StatBox = styled.div`
   width: 50%;
   color: ${props => props.theme.color.text};
   font-weight: bold;
+  font-size: x-large;
   
-  &.red { background: #d32f2f; }
+  &.red { background: #7b0000; background: linear-gradient(180deg, rgba(165,19,35,1) 0%, rgba(121,1,2,1) 100%); border-radius: 0px 0px 5px 0px; }
   &.blue { background: #1976d2 }
-  &.orange { background: #ffa000 }
+  &.orange { background: #dd6b00; background: linear-gradient(180deg, rgba(253,137,0,1) 0%, rgba(193,90,0,1) 100%); border-radius: 0px 0px 0px 5px; }
+  &.higherStat { color: #00ff00; }
+  &.lowerStat { color: #ff0000; }
 `
 
 export const CardDescription = styled.span`
