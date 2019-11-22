@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   background: ${props => props.color};
   
   &.absolute {
-    position: fixed;
+    position: absolute;
   }
 `
 

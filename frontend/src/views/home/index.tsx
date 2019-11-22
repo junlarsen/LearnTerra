@@ -108,9 +108,7 @@ function Errored() {
         </Container>
 
         <Container className="left">
-          <Anchor href="/">
-            Go back home
-          </Anchor>
+          <Anchor href="/">Go back home</Anchor>
         </Container>
       </div>
     </Canvas>
