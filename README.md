@@ -4,6 +4,10 @@ LearnTerra, a web-based Legends of Runeterra replay tool.
 
 # Overview
 
+LearnTerra, an open source platform to have players learn, coach, share / review their League of Runeterra games!
+
+> Note: LearnTerra does not have any public game ids right now. After the contest is over game ids will be released.
+
 ## Table of Contents
 
 - [What is LearnTerra?](#what-is-learnterra)
@@ -16,7 +20,7 @@ LearnTerra, a web-based Legends of Runeterra replay tool.
 
 This project was built for the Riot Games API Challenge (2019).
 
-The application allows you to replay a Legends of Runeterra match recorded with our collector tool in your browser.
+The application allows you to replay a Legends of Runeterra match recorded with our collector tool in your browser, share it with you friends via an unique link.
 
 ## Implemented Features
 
@@ -31,6 +35,7 @@ LearnTerra splits the game into a set of frames. These frames can be navigated t
 ## Documentation
 
 For technical documentation see the following pages:
+
 * [Backend documentation](https://github.com/supergrecko/LearnTerra/tree/master/backend/) - This acts as a simple API for the LearnTerra frontend.
 * [Collector documentation](https://github.com/supergrecko/LearnTerra/tree/master/collector) - This tool runs locally on a player's computer and collects thier game data using the Legends of Runeterra API.
 * [Frontend documentation](https://github.com/supergrecko/LearnTerra/tree/master/frontend) - This is the frontend code for LearnTerra, written as a React app.
@@ -52,6 +57,10 @@ Spells are currently not visualized in the replay. This means some frames will n
 #### No mobile support
 
 Since there is a lot of information to display, mobile device views are not currently supported
+
+#### Nexus HP detection is not ready
+
+Getting our model to read the text off of the nexuses requires a more developed model. Because of the short time frame we had to prioritize other features of the app.
 
 ## Legal
 

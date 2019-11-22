@@ -14,6 +14,7 @@ export const GameBoard = styled.div`
   flex-direction: column;
   background-size: cover;
   background-repeat: no-repeat;
+  //noinspection CssUnknownTarget
   background-image: url('/board.png');
   width: 100%;
 `

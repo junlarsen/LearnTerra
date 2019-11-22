@@ -1,4 +1,4 @@
-import React, { FormEvent, PropsWithChildren, useState } from 'react'
+import React, { PropsWithChildren, useState } from 'react'
 import { Navbar, NavText } from '../../components/navbar'
 import { Sidebar } from '../../components/sidebar'
 import { Frame } from '../../components/frame'
@@ -74,7 +74,7 @@ function WelcomeComponent({ history }: PropsWithChildren<{}> & RouteComponentPro
       <div>
         <Container>
           <CanvasTitle>LEARNTERRA</CanvasTitle>
-          <CanvasText>A Legends of Runeterra replay engine</CanvasText>
+          <CanvasText>A Legends of Runeterra replay & collaboration platform</CanvasText>
         </Container>
 
         <Container>

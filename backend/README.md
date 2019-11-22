@@ -2,6 +2,8 @@
 
 The backend also built with Typescript is running an ExpressJS server and acts like a basic REST-ful API.
 
+The backend contains a sample game in the /storage folder.
+
 ## Deployment
 
 Development and deployment is ran using the same command.
