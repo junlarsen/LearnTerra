@@ -30,9 +30,9 @@ LearnTerra splits the game into a set of frames. These frames can be navigated t
 
 ## Documentation
 
-For technical documentation see the following files:
-* [Backend documentation](https://github.com/supergrecko/LearnTerra/tree/master/backend/readme.md) - This acts as a simple API for the LearnTerra frontend.
-* [Collector documentation](https://github.com/supergrecko/LearnTerra/tree/master/collector/readme.md) - This tool runs locally on a player's computer and collects thier game data using the Legends of Runeterra API.
+For technical documentation see the following pages:
+* [Backend documentation](https://github.com/supergrecko/LearnTerra/tree/master/backend/) - This acts as a simple API for the LearnTerra frontend.
+* [Collector documentation](https://github.com/supergrecko/LearnTerra/tree/master/collector) - This tool runs locally on a player's computer and collects thier game data using the Legends of Runeterra API.
 
 ## Known Issues
 
