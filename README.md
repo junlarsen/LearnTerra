@@ -30,6 +30,10 @@ LearnTerra splits the game into a set of frames. These frames can be navigated t
 
 ## Documentation
 
+For technical documentation see the following files:
+* [Backend documentation](https://github.com/supergrecko/LearnTerra/tree/master/backend/readme.md) - This acts as a simple API for the LearnTerra frontend.
+* [Collector documentation](https://github.com/supergrecko/LearnTerra/tree/master/collector/readme.md) - This tool runs locally on a player's computer and collects thier game data using the Legends of Runeterra API.
+
 ## Known Issues
 
 #### The 2v1 position
@@ -43,6 +47,10 @@ Sometimes there are other animations on the screen during the game which cause t
 #### Multiple frames have the same board
 
 Spells are currently not visualized in the replay. This means some frames will not change visually.
+
+#### No mobile support
+
+Since there is a lot of information to display, mobile device views are not currently supported
 
 ## Legal
 
